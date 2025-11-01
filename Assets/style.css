@@ -1,0 +1,219 @@
+body {
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    /* background-color: #e5decf; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+
+    h1 {
+        font-size: 16px;
+        color: #715d32;
+    }
+
+    legend {
+        font-size: 1.5em;
+        font-style: italic;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        gap: 2em;
+        background-color: #e5decf;
+        color: #715d32;
+        padding: 26px;
+
+        .dados {
+            display: flex;
+            flex-direction: column;
+            align-content: space-around;
+            max-width: 100vw;
+
+        }
+
+        #lcdrBanco {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: 50%;
+
+            .bancario {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                height: 50%;
+
+
+                #banco {
+                    width: 17%;
+                }
+
+                #agencia {
+                    width: 30%;
+                }
+
+                #conta {
+                    width: 30%;
+                }
+
+                #tipo_conta {
+                    width: 39%;
+                }
+            }
+        }
+
+    }
+
+
+    #lcdrDadosPessoais {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        #nome_completo {
+            max-width: 500px;
+        }
+
+    }
+
+    #lcdrBanco {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        /* border: #c2ab61 solid 2px; */
+    }
+
+    #lcdrContatos {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .contatos {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #botao {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .button {
+            font-size: 13px;
+            color: #715d32;
+            font-weight: 700;
+        }
+    }
+
+
+
+
+}
+
+@media (min-width: 992px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-content: space-between;
+        margin: 2em 10em;
+        max-width: 65%;
+        font-size: 1em;
+
+
+        form {
+            padding: 20px;
+        }
+
+        #lcdrDadosPessoais {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .dados {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 20px;
+
+                #nome_completo {
+                    width: 28em;
+                }
+            }
+
+            #data-2 {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 20px;
+
+            }
+        }
+
+
+
+        #lcdrContatos {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 50%;
+
+            .contatos {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 20px;
+            }
+
+            #cep {
+                width: 8%;
+            }
+
+            #endereco {
+                width: 35%;
+            }
+
+            #numero {
+                width: 4%;
+            }
+        }
+
+
+        .bancario {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            height: 50%;
+        }
+
+        #banco {
+            width: 10%;
+        }
+
+        #agencia {
+            width: 15%;
+        }
+
+        #conta {
+            width: 37%;
+        }
+
+        #tipo_conta {
+            width: 27%;
+        }
+
+        #botao {
+
+            .button {
+                font-size: 17px;
+                color: #715d32;
+                font-weight: 700;
+            }
+        }
+
+    }
+}

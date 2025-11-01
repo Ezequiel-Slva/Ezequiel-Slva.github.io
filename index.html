@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Locador de Imóveis</title>
+    <link rel="stylesheet" href="./Assets/style.css">
+    <link rel="stylesheet" href="./Assets/fonts/open-sans/">
+
+</head>
+
+<body>
+
+    <h1>Administrizei - Cadastro de Locador</h1>
+
+    <form id="cadLcdr" action="/processar_cadastro" method="POST">
+
+        <div>
+            <fieldset id="lcdrDadosPessoais">
+                <legend>Dados Pessoais</legend>
+
+                <div class="dados">
+                    <label for="nome_completo">Nome Completo:</label>
+                    <input type="text" id="nome_completo" name="nome_completo" required>
+
+
+                    <label for="nacionalidade">Nacionalidade:</label>
+                    <input type="text" id="nacionalidade" name="nacionalidade" value="Brasileira" required>
+
+                    <label for="data_nascimento">Data de Nascimento:</label>
+                    <input type="date" id="data_nascimento" name="data_nascimento" required>
+                </div>
+
+                <div class="dados">
+                    <label for="cpf">CPF:*</label>
+                    <input type="text" id="cpf" name="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}"
+                        placeholder="Ex: 000.000.000-00" onblur="validarCpf(this)" required>
+
+                    <label for="rg">RG:*</label>
+                    <input type="text" id="rg" name="rg" required>
+
+                    <label for="estado_civil">Estado Civil:</label>
+                    <select id="estado_civil" name="estado_civil" required>
+                        <option value="">Selecione</option>
+                        <option value="solteiro">Solteiro(a)</option>
+                        <option value="casado">Casado(a)</option>
+                        <option value="separado">Separado(a)</option>
+                        <option value="divorciado">Divorciado(a)</option>
+                        <option value="viuvo">Viúvo(a)</option>
+                        <option value="uniao_estavel">União Estável</option>
+                    </select>
+
+                    <label for="profissao">Profissão:</label>
+                    <input type="text" id="profissao" name="profissao">
+                </div>
+            </fieldset>
+        </div>
+
+
+        <div>
+            <fieldset id="lcdrContatos">
+                <legend>Contato e Endereço Atual</legend>
+                <div class="contatos">
+
+                    <label>Telefones</label>
+                    <label for="telefone_celular">Celular:</label>
+                    <input type="tel" id="telefone_celular" name="telefone_celular" pattern="\(\d{2}\) ?\d{4,5}-?\d{4}"
+                        placeholder="(XX) XXXXX-XXXX" required>
+
+                    <label for="telefone_fixo">Fixo (Opcional):</label>
+                    <input type="tel" id="telefone_fixo" name="telefone_fixo" pattern="\(\d{2}\) ?\d{4}-?\d{4}"
+                        placeholder="(XX) XXXX-XXXX">
+
+                    <label for="email">E-mail:*</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com.br" required>
+                </div>
+                <div class="contatos">
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" pattern="\d{5}-?\d{3}" placeholder="Ex: 00000-000"
+                        onblur="buscarCep(this.value)" required>
+
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" name="endereco" readonly required>
+
+                    <label for="numero">Número:</label>
+                    <input type="text" id="numero" name="numero" required>
+
+
+                </div>
+                <div class="contatos">
+                    <label for="complemento">Complemento :</label>
+                    <input type="text" id="complemento" name="complemento" placeholder="(Apto, Bloco, etc.)">
+
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro" readonly required>
+
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" readonly required>
+
+                    <label for="estado">Estado (UF):</label>
+                    <select id="estado" name="estado" readonly required>
+                        <option value="">Selecione</option>
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AP">AP</option>
+                        <option value="AM">AM</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MT">MT</option>
+                        <option value="MS">MS</option>
+                        <option value="MG">MG</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PR">PR</option>
+                        <option value="PE">PE</option>
+                        <option value="PI">PI</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RS">RS</option>
+                        <option value="RO">RO</option>
+                        <option value="RR">RR</option>
+                        <option value="SC">SC</option>
+                        <option value="SP">SP</option>
+                        <option value="SE">SE</option>
+                        <option value="TO">TO</option>
+                    </select>
+                </div>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset id="lcdrBanco">
+                <legend>Dados Bancários (Para Repasse de Aluguel)</legend>
+                <div>
+                    <h5>Os depósitos serão efetuados nesta conta. A conta deve ser de titularidade do Locador.</h5>
+                </div>
+
+                <div class="bancario">
+                    <div>
+                        <label for="banco">Banco:</label>
+                        <input type="text" id="banco" name="banco" required>
+
+                        <label for="tipo_conta">Tipo de Conta:</label>
+                        <select id="tipo_conta" name="tipo_conta" required>
+                            <option value="">Selecione</option>
+                            <option value="corrente">Conta Corrente</option>
+                            <option value="poupanca">Conta Poupança</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="agencia">Agência:</label>
+                        <input type="text" id="agencia" name="agencia" placeholder=" (com dígito)">
+
+                        <label for="conta">Conta:</label>
+                        <input type="text" id="conta" name="conta" placeholder=" (com dígito)">
+                    </div>
+                </div>
+
+            </fieldset>
+        </div>
+        <!-- <fieldset>
+            <legend>Dados do Imóvel a Ser Locado</legend>
+
+            <p>Se o Locador possui múltiplos imóveis, este bloco deve ser repetido ou gerenciado por um sistema. Este é
+                um exemplo para o primeiro imóvel.</p>
+
+            <label for="imovel_cep">CEP do Imóvel:</label>
+            <input type="text" id="imovel_cep" name="imovel_cep" pattern="\d{5}-?\d{3}" placeholder="Ex: 00000-000"
+                required>
+
+            <label for="imovel_endereco">Endereço do Imóvel:</label>
+            <input type="text" id="imovel_endereco" name="imovel_endereco" required>
+
+            <label for="imovel_numero">Número do Imóvel:</label>
+            <input type="text" id="imovel_numero" name="imovel_numero" required>
+
+            <label for="imovel_tipo">Tipo de Imóvel:</label>
+            <select id="imovel_tipo" name="imovel_tipo" required>
+                <option value="">Selecione</option>
+                <option value="casa">Casa</option>
+                <option value="apartamento">Apartamento</option>
+                <option value="sala_comercial">Sala Comercial</option>
+                <option value="terreno">Terreno</option>
+                <option value="outro">Outro</option>
+            </select>
+
+            <label for="matricula_imovel">Nº Matrícula/Inscrição (IPTU/Registro):</label>
+            <input type="text" id="matricula_imovel" name="matricula_imovel" required>
+
+            <label for="valor_aluguel_pretendido">Valor de Aluguel Pretendido (R$):</label>
+            <input type="number" id="valor_aluguel_pretendido" name="valor_aluguel_pretendido" min="1" step="0.01"
+                required>
+
+            <label for="observacoes_imovel">Observações do Imóvel:</label>
+            <textarea id="observacoes_imovel" name="observacoes_imovel" rows="4"></textarea>
+
+        </fieldset> -->
+        <div id="botao">
+            <button type="submit" class="button">Cadastrar Locador</button>
+            <button type="reset" class="button">Limpar Formulário</button>
+        </div>
+
+        <p style="margin-top: 20px;">* Ao enviar, o Locador declara a veracidade das informações e autoriza a consulta
+            cadastral.</p>
+    </form>
+    <script src="./Assets/script.js" defer></script>
+
+</body>
+
+</html>

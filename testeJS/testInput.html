@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testando Input JS</title>
+</head>
+
+<body>
+    <input type="text" id="capturarNome" name="nome">
+    <button onclick="capturarInput()">Capturar</button>
+
+    <script>
+        function capturarInput() {
+            let pegarInput = document.getElementById("capturarNome");
+            let mostrarNome = pegarInput.value;
+
+            console.log("o nome digitado é: " + mostrarNome);
+
+        }
+    </script>
+</body>
+
+</html>
